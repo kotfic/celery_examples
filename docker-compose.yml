@@ -1,0 +1,23 @@
+rabbit:
+  image: rabbitmq:latest
+  container_name: rabbit
+  ports:
+    - 5672:5672
+    - 35197:35197
+    - 4369:4369
+    - 25672:25672
+
+flower:
+  build: .
+  working_dir: /fib
+  links:
+    - rabbit
+  command: celery -A fib flower
+  ports:
+    - 5555:5555
+
+worker:
+  build: .
+  working_dir: /fib
+  links:
+    - rabbit
