@@ -7,4 +7,5 @@ ADD . /fib
 RUN pip install -r /fib/requirements.txt
 
 USER user
+WORKDIR /fib
 CMD ["celery", "-A", "fib", "worker", "-l", "info"]
