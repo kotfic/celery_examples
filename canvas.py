@@ -131,10 +131,9 @@ if __name__ == "__main__":
     ###
     # What I wish I had known about for my Grad work
     #
-    # from previous.literature import classifier, best_f1
-    # from my.domain import param_sweep
+    # from previous.literature import classifier, param_sweep, best_f1
     #
-    # thesis = (group(classifier.s(p) for p in param_sweep()) | best_f1.s())
+    # thesis = (group(classifier.s(p, data) for p in param_sweep()) | best_f1.s())
     # result = thesis.delay()  # <= funny because it is true
     #
 

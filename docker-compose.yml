@@ -6,6 +6,7 @@ rabbit:
     - 35197:35197
     - 4369:4369
     - 25672:25672
+  cpuset: "0"
 
 flower:
   build: .
@@ -15,9 +16,18 @@ flower:
   command: celery -A fib flower
   ports:
     - 5555:5555
+  cpuset: "0"
 
-worker:
+worker1:
   build: .
   working_dir: /fib
   links:
     - rabbit
+  cpuset: "1"
+
+worker2:
+  build: .
+  working_dir: /fib
+  links:
+    - rabbit
+  cpuset: "2"
